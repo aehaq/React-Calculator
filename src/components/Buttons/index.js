@@ -1,29 +1,30 @@
 import React from "react";
+import "./style.css";
 
 function Buttons() {
     return (
-        <div>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
+        <div className="card-body">
+            <button className="btn btn-primary">1</button>
+            <button className="btn btn-primary">2</button>
+            <button className="btn btn-primary">3</button>
+            <button className="btn btn-danger">+</button>
             <br />
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
+            <button className="btn btn-primary">4</button>
+            <button className="btn btn-primary">5</button>
+            <button className="btn btn-primary">6</button>
+            <button className="btn btn-danger">-</button>
             <br />
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
+            <button className="btn btn-primary">7</button>
+            <button className="btn btn-primary">8</button>
+            <button className="btn btn-primary">9</button>
+            <button className="btn btn-danger">x</button>
             <br />
-            <button>0</button>
-            <button>/</button>
-            <button>^</button>
-            <button>=</button>
+            <button className="btn btn-primary">0</button>
+            <button className="btn btn-danger">/</button>
+            <button className="btn btn-danger">^</button>
+            <button className="btn btn-success">=</button>
             <br />
-            <button>clear</button>
+            <button className="btn btn-dark">clear</button>
         </div>
     )
 }
