@@ -8,8 +8,9 @@ class App extends Component {
 
   }
 
-  handleClick = id => {
-    console.log(id + "Clicked")
+  handleClick = event => {
+    console.log(event.target)
+    console.log(`You clicked a button with a value of ${event.target.id}`)
   }
   
   render() {
