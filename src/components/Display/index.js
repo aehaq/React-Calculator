@@ -2,9 +2,9 @@ import React from "react";
 
 function Display() {
     return (
-        <div>
+        <p className="card-title">
             
-        </div>
+        </p>
     )
 }
 
