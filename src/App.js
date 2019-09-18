@@ -4,6 +4,14 @@ import Buttons from "./components/Buttons";
 
 class App extends Component {
 
+  state = {
+
+  }
+
+  handleClick = id => {
+    console.log(id + "Clicked")
+  }
+  
   render() {
     return (
       <div className="container">
@@ -12,7 +20,7 @@ class App extends Component {
             <div className="card text-center">
               <h1 className="card-header"> Calculator </h1>
               <Display />
-              <Buttons />
+              <Buttons handleClick={this.handleClick}/>
             </div>
           </div>
         </div>
