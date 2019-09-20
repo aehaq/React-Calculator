@@ -5,7 +5,13 @@ import Buttons from "./components/Buttons";
 class App extends Component {
 
   state = {
-
+    display: {
+      current: 0,
+      history: null,
+    },
+    firstNum: null,
+    secondNum: null,
+    operator: null
   }
 
   handleClick = event => {
@@ -20,7 +26,7 @@ class App extends Component {
           <div className="col-lg-4">
             <div className="card text-center">
               <h1 className="card-header"> Calculator </h1>
-              <Display />
+              <Display display={this.state.display}/>
               <Buttons handleClick={this.handleClick}/>
             </div>
           </div>

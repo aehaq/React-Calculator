@@ -1,11 +1,9 @@
 import React from "react";
 
-function Display() {
-    return (
-        <p className="card-title">
-            
-        </p>
-    )
-}
-
+const Display = props =>  (
+    <div className="card-title">
+        <p>{props.display.history}</p>
+        <p>{props.display.current}</p>
+    </div>
+)
 export default Display;
