@@ -15,8 +15,17 @@ class App extends Component {
   }
 
   handleClick = event => {
-    console.log(event.target)
     console.log(`You clicked a button with a value of ${event.target.id}`)
+    let id = event.target.id
+    switch (id) {
+      case "+":
+        this.setState({operator: id});
+        console.log(this.state)
+        break;
+    
+      default:
+        break;
+    }
   }
   
   render() {
