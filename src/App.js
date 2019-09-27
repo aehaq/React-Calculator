@@ -6,7 +6,7 @@ class App extends Component {
 
   state = {
     display: {
-      current: 0,
+      current: "",
       history: null,
     },
     firstNum: null,
@@ -17,12 +17,18 @@ class App extends Component {
   handleClick = event => {
     console.log(`You clicked a button with a value of ${event.target.id}`)
     let id = event.target.id
-    switch (id) {
-      case "+":
+    let type = event.target.dataset.type
+    switch (type) {
+      case "operator":
         this.setState({operator: id});
-        console.log(this.state)
         break;
-    
+      case "number":
+        let newDisplay = {
+          current: this.state.display.current + id,
+          history: this.state.display.history
+        }
+        this.setState({display: newDisplay});
+        break;
       default:
         break;
     }
