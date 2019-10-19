@@ -24,6 +24,8 @@ class App extends Component {
     let id = event.target.id
     let type = event.target.dataset.type
 
+    console.log(`You clicked the ${id} button`)
+
     switch (type) {
 
       case "operator":
@@ -102,7 +104,7 @@ class App extends Component {
       case "+":
         // add firstNum and secondNum
         newDisplay = {
-          current: firstNum + secondNum,
+          current: toString(firstNum + secondNum),
           history: null
         }
 
@@ -116,7 +118,7 @@ class App extends Component {
       case "-":
         // subtract secondNum from firstNum
         newDisplay = {
-          current: firstNum - secondNum,
+          current: toString(firstNum - secondNum),
           history: null
         }
 
@@ -130,7 +132,7 @@ class App extends Component {
       case "x":
           // multiply firstNum and secondNum
           newDisplay = {
-            current: firstNum * secondNum,
+            current: toString(firstNum * secondNum),
             history: null
           }
   
@@ -144,7 +146,7 @@ class App extends Component {
       case "/":
         // divide firstNum by secondNum
         newDisplay = {
-          current: firstNum / secondNum,
+          current: toString(firstNum / secondNum),
           history: null
         }
 
@@ -158,7 +160,7 @@ class App extends Component {
       case "^":
         // firstNum to the power of secondNum
         newDisplay = {
-          current: Math.pow(firstNum, secondNum),
+          current: toString(Math.pow(firstNum, secondNum)),
           history: null
         }
 
@@ -172,6 +174,7 @@ class App extends Component {
       default:
         break;
     }
+    console.log("complete")
   }
 
   // This sets the default state.
