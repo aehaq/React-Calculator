@@ -10,9 +10,12 @@ class App extends Component {
       history: null,
     },
     firstNum: null,
-    secondNum: null,
-    operator: null
+    operator: null,
+    isFinal: false
   }
+
+  // Dev Note: We may need a boolean for whether or not "current" is a final output.
+  // This is so that, after clicking equals, if the user begins to type a new number, the current will be overwritten instead of appended to.
 
   // Whenever you click a button, the event is handed down from the Buttons component to this state.
   // 
@@ -20,7 +23,7 @@ class App extends Component {
 
     let id = event.target.id
     let type = event.target.dataset.type
-    
+
     switch (type) {
 
       case "operator":
@@ -52,6 +55,10 @@ class App extends Component {
 
       case "number":
       // When a number is clicked
+
+        if (this.state.isFinal) {
+          this.clear()
+        }
         // append the clicked number to the number currently displayed
         let newNum = this.state.display.current + id;
 
@@ -64,8 +71,17 @@ class App extends Component {
         break;
 
       case "equals":
-        this.calc()
-        this.setState({operator: null})
+      // when equals is clicked
+
+        // Only if a firstnum already exists and a second number has been entered
+        if (this.state.firstNum != null && this.state.display.current !== "") {
+          this.calc()
+        }
+        // set operator to null and isfinal to true, so that the user is back to normal when typing a new number
+        this.setState({
+          operator: null,
+          isFinal: true
+        })
         break;
 
       case "clear":
@@ -78,21 +94,84 @@ class App extends Component {
 
   calc() {
     console.log("calc run")
+    let newDisplay = {}
+    let firstNum = this.state.firstNum;
+    let secondNum = this.state.display.current;
+
     switch (this.state.operator) {
       case "+":
         // add firstNum and secondNum
+        newDisplay = {
+          current: firstNum + secondNum,
+          history: null
+        }
+
+        // reset state values
+        this.clear()
+        // display solution
+        this.setState({
+          display: newDisplay,
+        })
         break;
       case "-":
         // subtract secondNum from firstNum
+        newDisplay = {
+          current: firstNum - secondNum,
+          history: null
+        }
+
+        // reset state values
+        this.clear()
+        // display solution
+        this.setState({
+          display: newDisplay,
+        })
         break;
+      case "x":
+          // multiply firstNum and secondNum
+          newDisplay = {
+            current: firstNum * secondNum,
+            history: null
+          }
+  
+          // reset state values
+          this.clear()
+          // display solution
+          this.setState({
+            display: newDisplay,
+          })
+          break;
       case "/":
-        // subtract secondNum from firstNum
+        // divide firstNum by secondNum
+        newDisplay = {
+          current: firstNum / secondNum,
+          history: null
+        }
+
+        // reset state values
+        this.clear()
+        // display solution
+        this.setState({
+          display: newDisplay,
+        })
+        break;
+      case "^":
+        // firstNum to the power of secondNum
+        newDisplay = {
+          current: Math.pow(firstNum, secondNum),
+          history: null
+        }
+
+        // reset state values
+        this.clear()
+        // display solution
+        this.setState({
+          display: newDisplay,
+        })
         break;
       default:
         break;
     }
-    // solution becomes first num
-    // operator becomes null
   }
 
   // This sets the default state.
@@ -104,8 +183,8 @@ class App extends Component {
         history: null,
       },
       firstNum: null,
-      secondNum: null,
-      operator: null
+      operator: null,
+      isFinal: false
     })
   }
   
