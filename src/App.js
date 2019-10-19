@@ -95,8 +95,8 @@ class App extends Component {
   calc() {
     console.log("calc run")
     let newDisplay = {}
-    let firstNum = this.state.firstNum;
-    let secondNum = this.state.display.current;
+    let firstNum = parseInt(this.state.firstNum);
+    let secondNum = parseInt(this.state.display.current);
 
     switch (this.state.operator) {
       case "+":
