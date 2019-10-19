@@ -58,12 +58,16 @@ class App extends Component {
 
       case "number":
       // When a number is clicked
+        let newNum;
 
         if (this.state.isFinal) {
-          this.clear()
+          // Override previous answer if answering new question
+          newNum = id
+          this.setState({isFinal: false})
+        } else {
+          // append the clicked number to the number currently displayed
+          newNum = this.state.display.current + id;
         }
-        // append the clicked number to the number currently displayed
-        let newNum = this.state.display.current + id;
 
         // set the state with the new number
         let newDisplay = {
@@ -191,7 +195,7 @@ class App extends Component {
       current: "",
       history: null
     }
-    
+
     this.setState({
       display: defaultDisplay,
       firstNum: null,
