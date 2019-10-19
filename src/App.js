@@ -27,11 +27,17 @@ class App extends Component {
         if (this.state.operator === null) {
         // if no firstNum or current operator exists, 
           // set firstNum to be current, 
-          this.setState()
-          // and history to be current, 
-          // then empty current
-
-          
+          let firstNum = this.state.display.current
+          // and current becomes empty while history becomes the firstNum, 
+          let newDisplay = {
+            current: "",
+            history: firstNum
+          }
+          // update state accordingly
+          this.setState({
+            display: newDisplay,
+            firstNum: firstNum
+          })
         } else {
         // If firstNum and current operator exists, 
           // run calculation
@@ -43,8 +49,8 @@ class App extends Component {
         break;
       case "number":
         let newDisplay = {
-          current: this.state.display.current + id
-          // history: this.state.display.history
+          current: this.state.display.current + id,
+          history: this.state.display.history
         }
         this.setState({display: newDisplay});
         break;
