@@ -17,12 +17,14 @@ class App extends Component {
   // Whenever you click a button, the event is handed down from the Buttons component to this state.
   // 
   handleClick = event => {
-    console.log(`You clicked a button with a value of ${event.target.id}`)
+
     let id = event.target.id
     let type = event.target.dataset.type
+    
     switch (type) {
+
       case "operator":
-        // when operator is clicked 
+      // when operator is clicked 
   
         if (this.state.operator === null) {
         // if no firstNum or current operator exists, 
@@ -44,20 +46,28 @@ class App extends Component {
           this.calc()
         }
 
-        // New operator is already set
+        // register the operator which was clicked to state
         this.setState({operator: id});
         break;
+
       case "number":
+      // When a number is clicked
+        // append the clicked number to the number currently displayed
+        let newNum = this.state.display.current + id;
+
+        // set the state with the new number
         let newDisplay = {
-          current: this.state.display.current + id,
+          current: newNum,
           history: this.state.display.history
         }
         this.setState({display: newDisplay});
         break;
+
       case "equals":
         this.calc()
         this.setState({operator: null})
         break;
+
       case "clear":
         this.clear()
         break;
