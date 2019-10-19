@@ -30,6 +30,7 @@ class App extends Component {
 
       case "operator":
       // when operator is clicked 
+      this.setState({isFinal: false})
   
         if (this.state.operator === null) {
         // if no firstNum or current operator exists, 
@@ -97,14 +98,16 @@ class App extends Component {
   calc() {
     console.log("calc run")
     let newDisplay = {}
+    let solution;
     let firstNum = parseInt(this.state.firstNum);
     let secondNum = parseInt(this.state.display.current);
 
     switch (this.state.operator) {
       case "+":
         // add firstNum and secondNum
+        solution = firstNum + secondNum;
         newDisplay = {
-          current: toString(firstNum + secondNum),
+          current: solution.toString(),
           history: null
         }
 
@@ -117,8 +120,9 @@ class App extends Component {
         break;
       case "-":
         // subtract secondNum from firstNum
+        solution = firstNum - secondNum;
         newDisplay = {
-          current: toString(firstNum - secondNum),
+          current: solution.toString(),
           history: null
         }
 
@@ -131,8 +135,9 @@ class App extends Component {
         break;
       case "x":
           // multiply firstNum and secondNum
+          solution = firstNum * secondNum
           newDisplay = {
-            current: toString(firstNum * secondNum),
+            current: solution.toString(),
             history: null
           }
   
@@ -145,8 +150,9 @@ class App extends Component {
           break;
       case "/":
         // divide firstNum by secondNum
+        solution = firstNum / secondNum
         newDisplay = {
-          current: toString(firstNum / secondNum),
+          current: solution.toString(),
           history: null
         }
 
@@ -159,8 +165,9 @@ class App extends Component {
         break;
       case "^":
         // firstNum to the power of secondNum
+        solution = Math.pow(firstNum, secondNum)
         newDisplay = {
-          current: toString(Math.pow(firstNum, secondNum)),
+          current: solution.toString(),
           history: null
         }
 
@@ -180,11 +187,13 @@ class App extends Component {
   // This sets the default state.
   // Dev note: If we use a contsructor, we can make code DRY by saving default state as a value onMount.
   clear() {
+    let defaultDisplay = {
+      current: "",
+      history: null
+    }
+    
     this.setState({
-      display: {
-        current: "",
-        history: null,
-      },
+      display: defaultDisplay,
       firstNum: null,
       operator: null,
       isFinal: false
