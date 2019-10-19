@@ -23,7 +23,7 @@ const Buttons = props => (
         <button className="btn btn-danger" data-type={"operator"} id={"^"} onClick={(e) => props.handleClick(e)}>^</button>
         <button className="btn btn-success" data-type={"equals"} id={"="} onClick={(e) => props.handleClick(e)}>=</button>
         <br />
-        <button className="btn btn-dark">clear</button>
+        <button className="btn btn-dark" data-type={"clear"} id={"clear"} onClick={(e) => props.handleClick(e)}>clear</button>
     </div>
 ) 
 
