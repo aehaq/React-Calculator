@@ -207,7 +207,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col-lg-4">
             <div className="card text-center">
               <h1 className="card-header"> Calculator </h1>
